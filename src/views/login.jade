@@ -1,0 +1,22 @@
+extends./base.jade
+block append style
+	link(rel="stylesheet", type="text/css", href="/assests/style.css")
+block body
+	nav
+		a(href="/login")
+		.navlink
+			a(href="/login") Login
+		.navLink
+			a(href="/signup") Sign up
+		secion#login
+			form#loginForm(class="mainform", name="loginForm", action="/login", method="POST")
+				label(for="username") Username:
+				input#user(type="text", name="username", placeholder="username")
+				label(for="pass") Password:
+				input#pass(type="passowrd", name="pass", plaveholder="password")
+				a#loginSubmit(class="formSubmit", href="#") Sign in
+		#errorMessage
+			h3
+				span#errorMessage Wrong username or Passoword
+block scripts
+	script(src="/assests/client.js")
