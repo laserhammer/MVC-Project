@@ -1,3 +1,9 @@
+var crypto = require('crypto');
+var mongoose = require('mongoose');
+
+var AccountModel;
+var iterations = 10000;
+var saltLength = 64;
 var keyLength = 64;
 
 var AccountSchema = new mongoose.Schema({
@@ -6,7 +12,7 @@ var AccountSchema = new mongoose.Schema({
 		required: true,
 		trim: true,
 		unique: true,
-		match: /^[A-Za-z0-9_\-\.]{1,16}s/
+		match: /^[A-Za-z0-9_\-\.]{1,16}$/
 	},
 	
 	salt: {
@@ -49,11 +55,11 @@ AccountSchema.statics.findByUsername = function(name, callback) {
 		username: name
 	};
 	
-	return AccountModel.findONe(search, callback);
+	return AccountModel.findOne(search, callback);
 };
 
 AccountSchema.statics.generateHash = function(password, callback) {
-	var salt = crypto.randomBytes(saltlength);
+	var salt = crypto.randomBytes(saltLength);
 	
 	crypto.pbkdf2(password, salt, iterations, keyLength, function(err, hash) {
 		return callback(salt, hash.toString('hex'));
@@ -61,7 +67,7 @@ AccountSchema.statics.generateHash = function(password, callback) {
 };
 
 AccountSchema.statics.authenticate = function(username, password, callback) {
-	return AccountModel.findByUsername(username, funciton(err, doc) {
+	return AccountModel.findByUsername(username, function(err, doc) {
 		if(err)
 		{
 			return callback(err);
@@ -70,7 +76,7 @@ AccountSchema.statics.authenticate = function(username, password, callback) {
 		{
 			return callback();
 		}
-		doc.validatePassword(passowd, function(result) {
+		doc.validatePassword(password, function(result) {
 			if(result === true)
 			{
 				return callback(null, doc);

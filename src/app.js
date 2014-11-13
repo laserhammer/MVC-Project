@@ -10,7 +10,7 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var url = require('url');
 
-var dbURL = process.env.MONGOHQ_URL || 'mongodb:://localhost/MVC Project";
+var dbURL = process.env.MONGOHQ_URL || 'mongodb://localhost/MVC_Project';
 
 var db = mongoose.connect(dbURL, function(err) {
 	if(err)
@@ -40,7 +40,7 @@ var port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 var app = express();
 app.use('/assets', express.static(path.resolve(__dirname + '../../client/')));
-app.use(conpression());
+app.use(compression());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));

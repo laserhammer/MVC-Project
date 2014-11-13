@@ -15,7 +15,7 @@ $(document).ready(function() {
 			data: data,
 			dataType: "json",
 			success: function(result, status, xhr) {
-				window.location = result.redirect:
+				window.location = result.redirect;
 			},
 			error: function(xhr, status, error) {
 				var messageObj = JSON.parse(xhr.responseText);
@@ -33,7 +33,7 @@ $(document).ready(function() {
 			return false;
 		}
 		
-		if($("#pass").val() !== $("#pass2")/val()) 
+		if($("#pass").val() !== $("#pass2").val()) 
 		{
 			handleError("Passwords must match");
 			return false;
@@ -47,7 +47,7 @@ $(document).ready(function() {
 	$("#loginSubmit").on("click", function(e) {
 		e.preventDefault();
 		
-		if($("#user").val() = '' || $("#pass").val() = '')
+		if($("#user").val() == '' || $("#pass").val() == '')
 		{
 			handleError("Username or passowrd is empty");
 			return false;

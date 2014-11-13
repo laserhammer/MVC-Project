@@ -1,10 +1,27 @@
 {
   "name": "igm430-mvc-project",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "./src/app.js",
+  "dependencies": {
+    "connect-redis": "^2.1.0",
+    "compression": "^1.2.0",
+    "express": "^4.10.1",
+    "body-parser": "^1.9.1",
+    "express-session": "^1.9.1",
+    "cookie-parser": "^1.3.3",
+    "jade": "^1.7.0",
+    "underscore": "^1.7.0",
+    "serve-favicon": "^2.1.6",
+    "mongoose": "^3.8.18"
+  },
+  "devDependencies": {
+	"jshint": "^2.5.6"
+  },
   "scripts": {
-    "test": "\"echo \\\"Tests ocmplete\\\"\""
+    "start": "node ./src/app.js",
+    "pretest": "jshint ./src",
+    "test": "echo \"Tests Complete\""
   },
   "repository": {
     "type": "git",
@@ -12,20 +29,8 @@
   },
   "author": "Ben Robbins",
   "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^0.8.0",
-    "body-parser": "^1.9.1",
-    "compression": "^1.2.0",
-    "connect-redis": "^2.1.0",
-    "cookie-parser": "^1.3.3",
-    "express": "^4.10.0",
-    "express-session": "^1.9.1",
-    "jade": "^1.7.0",
-    "mongoose": "^3.8.18",
-    "serve-favicon": "^2.1.6",
-    "underscore": "^1.7.0"
+  "bugs": {
+    "url": "https://github.com/laserhammer/MVC-Project/issues"
   },
-  "devDependencies": {
-    "jshint": "^2.5.6"
-  }
+  "homepage": "https://github.com/laserhammer/MVC-Project"
 }

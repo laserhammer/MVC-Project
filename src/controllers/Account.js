@@ -2,7 +2,7 @@ var models = require('../models');
 
 var Account = models.Account;
 
-var loginPage = funciton(req, res) {
+var loginPage = function(req, res) {
 	res.render('login');
 };
 
@@ -32,7 +32,7 @@ var login = function(req, res) {
 		
 		req.session.account = account.toAPI();
 		
-		res.jsont({redirect: '/viewCurrent'});
+		res.json({redirect: '/maker'});
 	});
 };
 
@@ -52,11 +52,11 @@ var signup = function(req, res) {
 		var accountData = {
 			username: req.body.username,
 			salt: salt,
-			pasword: hash
+			password: hash
 		};
 		
 		var newAccount = new Account.AccountModel(accountData);
-		
+		console.log(newAccount.username);
 		newAccount.save(function(err) {
 			if(err) 
 			{	
@@ -65,7 +65,7 @@ var signup = function(req, res) {
 			}
 			
 			req.session.account = newAccount.toAPI();
-			res.jsont({redirect: '/viewCurrent'});
+			res.json({redirect: '/maker'});
 		});
 	});
 };

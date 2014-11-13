@@ -1,0 +1,28 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+  nav
+    a(href="/login")
+    .navlink
+      a(href="/logout") Log out
+  section#makeTask
+    form#taskForm(class="taskForm", name="taskForm", action="/maker", method="POST")
+      label(for="name") Name: 
+      input#taskName(type="text", name="name", placeholder="Task title")
+      label(for="dueDate") Due Date: 
+      input#dueDate(type="text", name="dueDate", placeholder="Due Date")
+      a#makeTaskSubmit(class="makeTaskSubmit", href="#") Make Task
+  section#tasks
+    if !tasks || tasks.length == 0
+        div.task
+            h3.emptyTask No Tasks yet
+    else
+        each val in tasks
+            div.task
+                h3.taskName Title: #{val.title}
+                h3.taskDueDate Due Date: #{val.dueDate}
+    h3
+      span#errorMessage
+block scripts
+        script(src="/assets/maker.js")

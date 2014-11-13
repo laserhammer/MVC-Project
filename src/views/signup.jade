@@ -8,14 +8,16 @@ block body
       a(href="/login") Login
     .navlink
       a(href="/signup") Sign up
-  section#login
-    form#loginForm(class="mainForm", name="loginForm", action="/login", method="POST")
+  section#signup
+    form#signupForm(class="mainForm", name="signupForm", action="/signup", method="POST")
       label(for="username") Username: 
       input#user(type="text", name="username", placeholder="username")
       label(for="pass") Password: 
       input#pass(type="password", name="pass", placeholder="password")
-      a#loginSubmit(class="formSubmit", href="#") Sign in
+      label(for="pass2") Password: 
+      input#pass2(type="password", name="pass2", placeholder="retype password")
+      a#signupSubmit(class="formSubmit", href="#") Sign up
 
-      span#errorMessage 
+      span#errorMessage
 block scripts
-    script(src="/assets/client.js")
+        script(src="/assets/client.js")
